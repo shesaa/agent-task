@@ -48,7 +48,22 @@ def create_workflow() -> StateGraph:
     
     return workflow.compile()
 
+def export_workflow():
+    workflow = create_workflow()
+    graph = workflow.get_graph()
+
+    # Export PNG correctly
+    with open("Studio.png", "wb") as f:
+        f.write(graph.draw_mermaid_png())
+
+    # Save Mermaid .mmd file
+    with open("Studio.mmd", "w") as f:
+        f.write(graph.draw_mermaid())
+
+
 if __name__ == "__main__":
+    export_workflow()
+
     app = create_workflow()
     
     # Run with empty initial state
