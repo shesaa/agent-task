@@ -3,6 +3,7 @@ from typing import Optional, Any
 from datetime import date
 from constants.messages import ErrorMessages
 
+
 class BaseBusinessData(BaseModel):
     """Base model for business data with common validation"""
     daily_revenue: float = Field(..., gt=0, description="Today's total revenue")
